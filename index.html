@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Aplicación Web Progresiva</title>
+
+  <meta name="theme-color" content="#FB314E">
+  <meta name="MobileOptimized" content="width">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Íconos -->
+  <link rel="shortcut icon" href="img/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/favicon-192.png">
+  <link rel="apple-touch-startup-image" href="img/favicon-512.png">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div id="logo">
+                <h1>Marco Antonio Sanchez Alvarez</h1>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li>
+                        <a href="#main-header">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#services">Exhibicion</a>
+                    </li>
+                    <li>
+                        <a href="#videos">Videos</a>
+                    </li>
+                    <li>
+                        <a href="#footer">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="clearfix"></div>
+    <div id="slider">
+        <div class="container">
+            <h2>Acuario Puerto Vallarta</h2>
+        </div>
+    </div>
+    <div id="services">
+        <div class="container">
+            <h2 class="subheader">Exhibiciones</h2>
+            <div class="service">
+                <img src="./img/images.jpg">
+                <h3>Corales y arrecifes</h3>
+                <p>Descubre la belleza de los arrecifes de coral y aprende sobre su importancia ecologica y conservacion. Observa como interactuan diversas especies y como los arrecifes mantienen el equilibrio del ecosistema marino. Ideal para aprender sobre biodiversidad marina.</p>
+            </div>
+            <div class="service">
+                <img src="./img/images1.jpg">
+                <h3>Peces tropicales</h3>
+                  <p>Explora nuestros acuarios llenos de peces tropicales y conoce sus habitats, comportamientos y diversidad. Observa desde pequenos cardumenes hasta especies coloridas unicas de la region, y aprende como viven en su entorno natural.</p>
+             </div>
+            <div class="service">
+                <img src="./img/images2.jpg">
+              <h3>Tiburones y rayas</h3>
+                <p>Observa de cerca tiburones y rayas en nuestro tunel submarino. Aprende sobre sus caracteristicas, habitos alimenticios y la importancia de conservar estas especies. Una experiencia unica que combina diversion y educacion para visitantes de todas las edades.</p>
+                          </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="videos">
+        <div class="container">
+            <h2 class="subheader">Videos</h2>
+            <div class="video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CQvjljAwk4I?si=3BgMJJcHxy4GE9aZ"></iframe>
+                
+                <p>Que pasa con los tiburones?</p>
+                 <p>Descubre el comportamiento de los tiburones y como interactuan con su entorno. Aprende datos curiosos sobre su alimentacion y conservacion.</p>
+           
+            </div>
+            <div class="video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/I9fbN9orukY?si=nYBO9YQSUP0lIn6o"></iframe>
+                <p>Tesoros bajo el mar: Arrecifes</p>
+                <p>Explora los arrecifes de coral y conoce la diversidad de especies que habitan en ellos. Aprende como proteger estos ecosistemas vitales.</p>
+           
+            </div>
+            <div class="video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/SQAxtYZSY9c?si=x_vHFjl1SU7orapH"></iframe>
+                <p>Peces tropicales</p>
+                <p>Sumergete en el mundo de los peces tropicales, conoce sus habitats y comportamientos, y descubre la importancia de preservar su medio ambiente.</p>
+          
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <footer id="footer">
+        <div class="container">
+            <h2 class="subheader">Contacto</h2>
+            <p>Enviame un mensaje en mis redes sociales c:</p>
+            <ul id="networks">
+                <li>
+                    <a href="">
+                        <img src="./img/facebook.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="./img/twitter.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="./img/instagram.png">
+                    </a>
+                </li>
+            </ul>
+        <div class="clearfix"></div>
+        </div>
+    </footer>
+
+    <!-- Scripts al final del body: jQuery primero, luego main.js (registra service worker) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+
+    </body>
+</html>
