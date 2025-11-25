@@ -1,6 +1,7 @@
 // service worker
 // Desarrollo: si FORCE_CLEAN_SW = true, desregistrar todos los SW existentes y limpiar caches
-const FORCE_CLEAN_SW = false; // cambia a false cuando no quieras limpiar en cada recarga
+// IMPORTANTE: en desarrollo poner true para forzar limpieza de SW/caches y evitar cache viejo
+const FORCE_CLEAN_SW = true; // cambia a false cuando no quieras limpiar en cada recarga
 
 function registerServiceWorker(){
     if ('serviceWorker' in navigator) {

@@ -1,134 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles.css">
 
-  <title>Aplicación Web Progresiva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <meta name="theme-color" content="#FB314E">
-  <meta name="MobileOptimized" content="width">
-  <meta name="HandheldFriendly" content="true">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Aplicación Web Progresiva</title>
+    <meta name="theme-color" content="#FB314E">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- Íconos -->
-  <link rel="shortcut icon" href="img/favicon-32.png" type="image/png">
-  <link rel="apple-touch-icon" href="img/favicon-192.png">
-  <link rel="apple-touch-startup-image" href="img/favicon-512.png">
+    <!-- Íconos -->
+    <link rel="shortcut icon" href="img/favicon-32.png" type="image/png">
+    <link rel="apple-touch-icon" href="img/favicon-192.png">
+    <link rel="apple-touch-startup-image" href="img/favicon-512.png">
 
-  <!-- Manifest -->
-  <link rel="manifest" href="manifest.json">
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="styles.css">
+    <!-- Estilos adicionales para el formulario Firebase -->
+    <style>
+        .fb-container {
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 700px;
+        }
 
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            background: #0275d8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #lista-mensajes p {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
+
+    <!-- HEADER -->
     <header id="main-header">
         <div class="container">
             <div id="logo">
                 <h1>Marco Antonio Sanchez Alvarez</h1>
             </div>
+
             <div id="menu">
                 <ul>
-                    <li>
-                        <a href="#main-header">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="#services">Exhibicion</a>
-                    </li>
-                    <li>
-                        <a href="#videos">Videos</a>
-                    </li>
-                    <li>
-                        <a href="#footer">Contacto</a>
-                    </li>
+                    <li><a href="#main-header">Inicio</a></li>
+                    <li><a href="#services">Exhibición</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#firebase-form">Contacto</a></li>
                 </ul>
             </div>
         </div>
     </header>
+
     <div class="clearfix"></div>
+
+    <!-- SLIDER -->
     <div id="slider">
         <div class="container">
             <h2>Acuario Puerto Vallarta</h2>
         </div>
     </div>
+
+    <!-- SERVICES -->
     <div id="services">
         <div class="container">
             <h2 class="subheader">Exhibiciones</h2>
+
             <div class="service">
                 <img src="./img/images.jpg">
                 <h3>Corales y arrecifes</h3>
-                <p>Descubre la belleza de los arrecifes de coral y aprende sobre su importancia ecologica y conservacion. Observa como interactuan diversas especies y como los arrecifes mantienen el equilibrio del ecosistema marino. Ideal para aprender sobre biodiversidad marina.</p>
+                <p>Descubre la belleza de los arrecifes...</p>
             </div>
+
             <div class="service">
                 <img src="./img/images1.jpg">
                 <h3>Peces tropicales</h3>
-                  <p>Explora nuestros acuarios llenos de peces tropicales y conoce sus habitats, comportamientos y diversidad. Observa desde pequenos cardumenes hasta especies coloridas unicas de la region, y aprende como viven en su entorno natural.</p>
-             </div>
+                <p>Explora nuestros acuarios llenos...</p>
+            </div>
+
             <div class="service">
                 <img src="./img/images2.jpg">
-              <h3>Tiburones y rayas</h3>
-                <p>Observa de cerca tiburones y rayas en nuestro tunel submarino. Aprende sobre sus caracteristicas, habitos alimenticios y la importancia de conservar estas especies. Una experiencia unica que combina diversion y educacion para visitantes de todas las edades.</p>
-                          </div>
+                <h3>Tiburones y rayas</h3>
+                <p>Observa de cerca tiburones y rayas...</p>
+            </div>
         </div>
     </div>
+
     <div class="clearfix"></div>
+
+    <!-- VIDEOS -->
     <div id="videos">
         <div class="container">
             <h2 class="subheader">Videos</h2>
+
             <div class="video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/CQvjljAwk4I?si=3BgMJJcHxy4GE9aZ"></iframe>
-                
-                <p>Que pasa con los tiburones?</p>
-                 <p>Descubre el comportamiento de los tiburones y como interactuan con su entorno. Aprende datos curiosos sobre su alimentacion y conservacion.</p>
-           
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CQvjljAwk4I"></iframe>
+                <p>¿Qué pasa con los tiburones?</p>
             </div>
+
             <div class="video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/I9fbN9orukY?si=nYBO9YQSUP0lIn6o"></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/I9fbN9orukY"></iframe>
                 <p>Tesoros bajo el mar: Arrecifes</p>
-                <p>Explora los arrecifes de coral y conoce la diversidad de especies que habitan en ellos. Aprende como proteger estos ecosistemas vitales.</p>
-           
             </div>
+
             <div class="video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/SQAxtYZSY9c?si=x_vHFjl1SU7orapH"></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/SQAxtYZSY9c"></iframe>
                 <p>Peces tropicales</p>
-                <p>Sumergete en el mundo de los peces tropicales, conoce sus habitats y comportamientos, y descubre la importancia de preservar su medio ambiente.</p>
-          
             </div>
         </div>
     </div>
+
     <div class="clearfix"></div>
+
+    <!-- ========================= -->
+    <!-- FORMULARIO FIREBASE AQUÍ -->
+    <!-- ========================= -->
+
+    <section id="firebase-form" class="fb-container">
+
+        <h2 style="text-align:center;">Formulario con Firebase</h2>
+
+        <div class="card">
+            <h3>Enviar mensaje</h3>
+
+            <input type="text" id="nombre" placeholder="Nombre">
+            <textarea id="mensaje" placeholder="Escribe tu mensaje"></textarea>
+            <button onclick="guardarMensaje()">Guardar</button>
+        </div>
+
+        <div class="card">
+            <h3>Mensajes Guardados</h3>
+            <div id="lista-mensajes">Cargando mensajes...</div>
+        </div>
+
+    </section>
+
+    <div class="clearfix"></div>
+
+    <!-- FOOTER -->
     <footer id="footer">
         <div class="container">
             <h2 class="subheader">Contacto</h2>
-            <p>Enviame un mensaje en mis redes sociales c:</p>
+            <p>Envíame un mensaje en mis redes sociales:</p>
+
             <ul id="networks">
-                <li>
-                    <a href="">
-                        <img src="./img/facebook.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <img src="./img/twitter.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <img src="./img/instagram.png">
-                    </a>
-                </li>
+                <li><a><img src="./img/facebook.png"></a></li>
+                <li><a><img src="./img/twitter.png"></a></li>
+                <li><a><img src="./img/instagram.png"></a></li>
             </ul>
-        <div class="clearfix"></div>
         </div>
     </footer>
 
-    <!-- Scripts al final del body: jQuery primero, luego main.js (registra service worker) -->
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="main.js"></script>
 
-    </body>
+    <!-- Tu conexión Firebase -->
+    <script type="module" src="app.js"></script>
+
+</body>
 </html>
