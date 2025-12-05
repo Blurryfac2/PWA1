@@ -1,5 +1,5 @@
-// Asignar nombre y versión de la caché
-const CACHE_NAME = 'v1_cache_MarcoAntonioPWA';
+// Asignar nombre y versión de la caché (bump para forzar actualización de recursos)
+const CACHE_NAME = 'v2_cache_MarcoAntonioPWA';
 
 // Archivos a cachear en la aplicación
 const urlsToCache = [
@@ -68,4 +68,39 @@ self.addEventListener('fetch', e => {
                 return fetch(e.request); // O descarga si no está en caché
             })
     );
+});
+
+// Manejar eventos de push (cuando envíe desde un servidor) y mostrar notificación
+self.addEventListener('push', event => {
+    let payload = {};
+    try {
+        if (event.data) payload = event.data.json();
+    } catch (e) {
+        payload = { title: 'Notificación', body: event.data ? event.data.text() : 'Tienes una notificación.' };
+    }
+
+    const title = payload.title || 'Notificación';
+    const options = {
+        body: payload.body || '',
+        icon: payload.icon || './img/favicon-192.png',
+        badge: payload.badge || './img/favicon-96.png',
+        data: payload.data || {}
+    };
+
+    event.waitUntil(self.registration.showNotification(title, options));
+});
+
+// Manejar clicks en la notificación
+self.addEventListener('notificationclick', event => {
+    event.notification.close();
+    const url = event.notification.data && event.notification.data.url ? event.notification.data.url : '/';
+    event.waitUntil(clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windowClients => {
+        for (let i = 0; i < windowClients.length; i++) {
+            const client = windowClients[i];
+            if (client.url === url && 'focus' in client) {
+                return client.focus();
+            }
+        }
+        if (clients.openWindow) return clients.openWindow(url);
+    }));
 });

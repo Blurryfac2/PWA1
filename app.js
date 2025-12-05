@@ -72,6 +72,8 @@ window.guardarMensaje = async function () {
     const obj = { nombre, mensaje, fecha: Date.now() };
     saveLocalMessage(obj);
     appendMessageToUI(obj);
+    // Mostrar notificación automática de nuevo mensaje guardado
+    try { sendNotification('Nuevo mensaje guardado', `${nombre}: ${mensaje}`); } catch (e) { console.warn('No se pudo enviar notificación al guardar:', e); }
     document.getElementById("nombre").value = "";
     document.getElementById("mensaje").value = "";
 };
@@ -287,6 +289,30 @@ function updateLocalUIAfterSync(localId, remoteId) {
     }
 }
 
+// Send a notification (uses Service Worker registration when available)
+async function sendNotification(title, body, icon = './img/favicon-192.png', data = {}) {
+    try {
+        // Request permission if necessary
+        if (Notification && Notification.permission !== 'granted') {
+            try { await Notification.requestPermission(); } catch (e) { /* ignore */ }
+        }
+
+        if (Notification && Notification.permission === 'granted') {
+            const reg = await navigator.serviceWorker.getRegistration();
+            const options = { body: body || '', icon: icon, badge: icon, data };
+            if (reg && reg.showNotification) {
+                reg.showNotification(title || 'Notificación', options);
+            } else {
+                new Notification(title || 'Notificación', options);
+            }
+        } else {
+            console.warn('Notificación no mostrada: permiso denegado o no disponible');
+        }
+    } catch (e) {
+        console.error('Error en sendNotification:', e);
+    }
+}
+
 // Remove all local messages (clear localStorage and UI)
 function clearLocalMessages() {
     localStorage.removeItem(LOCAL_KEY);
@@ -334,6 +360,8 @@ async function syncLocalToFirestoreManual() {
                 localStorage.setItem(LOCAL_KEY, JSON.stringify(arr));
                 // update local UI element to show 'Sincronizado' and firebase-delete button
                 updateLocalUIAfterSync(arr[i].id, docRef.id);
+                // notify user that message synced
+                try { sendNotification('Mensaje sincronizado', `${arr[i].nombre}: ${arr[i].mensaje}`); } catch (e) { console.warn('No se pudo notificar sync:', e); }
                 if (status) status.textContent = `Sincronizado (restantes ${arr.filter(x=>!x.synced).length})...`;
             } catch (err) {
                 console.error('Error subiendo item a Firestore:', err);
@@ -461,6 +489,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Load local messages on start
     loadLocalMessagesToUI();
+    // Solicitar permiso de notificaciones en cuanto el usuario abra la app (si no fue ya concedido)
+    try {
+        if (Notification && Notification.permission === 'default') {
+            Notification.requestPermission().then(p => console.log('Permiso notificaciones:', p));
+        }
+    } catch (e) { console.warn('No se pudo solicitar permiso de notificaciones:', e); }
     // Auto-sync: intentar enviar pendientes periódicamente y al reconectar
     try {
         // intentar cada 20 segundos
